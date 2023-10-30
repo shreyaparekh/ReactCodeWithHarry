@@ -24,10 +24,16 @@ export class Navbar extends Component {
             </li>
          
           </ul>
- 
+ <div className="d-flex">
+    <div className="bg-primary rounded mx-2" onClick={() => this.props.toggleMode('primary')}  style={{ height: '30px', width: '30px',cursor:'pointer' }}></div>
+    <div className="bg-danger rounded mx-2" onClick={() => this.props.toggleMode('danger')}  style={{ height: '30px', width: '30px',cursor:'pointer' }}></div>
+    <div className="bg-success rounded mx-2" onClick={() => this.props.toggleMode('success')}  style={{ height: '30px', width: '30px',cursor:'pointer' }}></div>
+    <div className="bg-warning rounded mx-2" onClick={() => this.props.toggleMode('warning')}  style={{ height: '30px', width: '30px',cursor:'pointer' }}></div>
+    </div>
+
 <div className={`form-check form-switch text-${this.props.mode==='light'?'dark':'light'}`}>
-  <input className='form-check-input' onClick={this.props.toggleMode} type='checkbox'/>
-  <label htmlFor="switch" className='form-check-label'>Enable Search</label>
+  <input className='form-check-input' onClick={()=>{this.props.toggleMode(null)}} type='checkbox'/>
+  <label htmlFor="switch" className='form-check-label'>Toggle Mode</label>
 
 </div>
           {/* <form className="d-flex" role="search">
