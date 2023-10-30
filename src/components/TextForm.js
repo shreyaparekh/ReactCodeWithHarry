@@ -12,8 +12,9 @@ export default function TextForm(props) {
         setText(event.target.value);
       }
 
-      const handleCopy = ()=>{
+      const handleCopy = ()=>{  
         navigator.clipboard.writeText(text);
+        document.getSelection().removeAllRanges();
         alert("Text copied to clipboard!");
       }
   const handleClear = ()=>{
@@ -34,14 +35,14 @@ const [text, setText] = useState("Enter Text Here");
       <div className="mb-3">
         <textarea className="form-control" value={text} id="myBox" rows="8" onChange={handleChange} style={{backgroundColor:props.mode==='light'?'white':'grey',color:props.mode==='dark'?'white':'black'}}></textarea>
 </div>
-<button className="btn btn-primary mx-1 my-1" onClick={handleClick}>Cretae UpperCase</button>
+<button className="btn btn-primary mx-1 my-1"  disabled ={text.length===0} onClick={handleClick}>Cretae UpperCase</button>
 <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy</button>
 <button className="btn btn-primary mx-1 my-1" onClick={handleClear}>Clear</button>
 
     </div>
   <div className="container my-2" style={{color:props.mode==='dark'?'white':'black'}}>
     <h1>toyr work</h1>
-    <p>{text.split(" ").filter((elemnet)=>{return elemnet.length!=0}).length} wordas and length {text.length}character</p>
+    <p>{text.split("/\s+/").filter((elemnet)=>{return elemnet.length!=0}).length} wordas and length {text.length}character</p>
     <p>{text.length} word length:{text.split(" ").length} character</p>
     <p>{0.008*text.split(" ").length}Minutes</p>
     <h2>Preview</h2>
